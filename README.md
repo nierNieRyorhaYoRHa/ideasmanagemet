@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Table design
+## categories table
 
-Things you may want to cover:
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| name   | string     | null: false, unique: true      |
 
-* Ruby version
+### Association
+- has_many :idea
 
-* System dependencies
 
-* Configuration
+## ideas table
 
-* Database creation
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| categories | references | null: false, foreign_key: true |
+| body       | text       | null: false                    |
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :categories
