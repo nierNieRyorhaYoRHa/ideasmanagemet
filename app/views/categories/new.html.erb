@@ -1,0 +1,20 @@
+<%= form_with(model: @category, url: categories_path, local: true) do |form| %>
+  <%= render 'error_messages', model: @category %>
+  <h1>アイディアを追加</h1>
+    <h2>カテゴリーを入力</h2>
+  <div class="field">
+    <%= form.label :name, "カテゴリー名" %>
+    <%= form.text_field :name %>
+  </div>
+
+    <h2>アイディアを入力</h2>
+  <div class="field">
+    <%= form.label :body, "本文" %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "登録する" %>
+  </div>
+  
+<% end %>
