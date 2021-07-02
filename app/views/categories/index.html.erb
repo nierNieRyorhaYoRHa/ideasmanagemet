@@ -1,0 +1,12 @@
+<div class="contents row">
+  <% @categories.each do |category| %>
+    <div class="content_post">
+      <p><%= category.name %></p>
+      <span class="name">
+        <%= category.name %>
+      </span>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to '投稿する', new_category_path %>
