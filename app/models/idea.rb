@@ -1,3 +1,5 @@
 class Idea < ApplicationRecord
-  belongs_to :categories
+  belongs_to :category
+  validates :body,
+    presence: true
 end

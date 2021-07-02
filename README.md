@@ -8,7 +8,7 @@
 | name   | string     | null: false, unique: true      |
 
 ### Association
-- has_many :idea
+- has_many :ideas
 
 
 ## ideas table
@@ -19,4 +19,4 @@
 | body       | text       | null: false                    |
 
 ### Association
-- belongs_to :categories
+- belongs_to :category
