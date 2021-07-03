@@ -1,0 +1,17 @@
+<%= form_with(url: search_ideas_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "カテゴリーで検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
+
+<%= link_to '投稿する', new_idea_path %>
+
+<div class="contents row">
+  <% @ideas.each do |idea| %>
+    <div class="content_post">
+      <p>id: <%= idea.id %></p>
+      <p>category: <%= idea.category.name %></p>
+      <p>idea: <%= idea.body %></p>
+      <p>time: <%= idea.created_at.to_i %></p>
+    </div>
+  <% end %>
+</div>
