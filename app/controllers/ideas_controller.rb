@@ -14,13 +14,18 @@ class IdeasController < ApplicationController
       idea = Idea.new(idea_params(categoryid))
       if idea.valid?
         idea.save
-        redirect_to action: :index
+        response_success(:category, :idea, :create)
       else
-        render action: :new
+        response_unprocessable_entity(:idea)
       end
     else
-      render action: :new
+      response_unprocessable_entity(:category)
     end
+  end
+
+  def search
+    @ideas = Idea.search(params[:keyword])
+    response_not_found(:idea) if @ideas.blank?
   end
 
   private
