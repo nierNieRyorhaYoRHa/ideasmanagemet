@@ -42,17 +42,38 @@ RSpec.describe "Ideas", type: :request do
   end 
 
   describe 'GET #search' do
-    it 'searchアクションにリクエストすると正常にレスポンスが返ってくる' do 
+    it 'searchアクションに検索条件なしでリクエストすると正常にレスポンスが返ってくる' do 
       get search_ideas_path(@search)
       expect(response.status).to eq 200
     end
-    it 'searchアクションにリクエストするとレスポンスに投稿済みのideaのbodyが存在する' do 
+    it 'searchアクションに検索条件なしでリクエストするとレスポンスに投稿済みのideaのbodyが存在する' do 
       get search_ideas_path(@search)
       expect(response.body).to include(@idea.body)
     end
-    it 'searchアクションにリクエストするとレスポンスに登録済みのcategoryのnameが存在する' do 
+    it 'searchアクションに検索条件なしでリクエストするとレスポンスに登録済みのcategoryのnameが存在する' do 
       get search_ideas_path(@search)
       expect(response.body).to include(@idea.category.name)
+    end
+    it 'searchアクションに登録済みのカテゴリーでリクエストすると正常にレスポンスが返ってくる' do 
+      @search["keyword"] = @idea.category.name
+      get search_ideas_path(@search)
+      expect(response.status).to eq 200
+    end
+    it 'searchアクションに登録済みのカテゴリーでリクエストするとレスポンスに投稿済みのideaのbodyが存在する' do 
+      @search["keyword"] = @idea.category.name
+      get search_ideas_path(@search)
+      expect(response.body).to include(@idea.body)
+    end
+    it 'searchアクションに登録済みのカテゴリーでリクエストするとレスポンスに登録済みのcategoryのnameが存在する' do 
+      @search["keyword"] = @idea.category.name
+      get search_ideas_path(@search)
+      expect(response.body).to include(@idea.category.name)
+    end
+    it 'searchアクションに未登録のカテゴリーでリクエストすると404レスポンスが返ってくる' do 
+      @search["keyword"] = @idea.category.name + "a"
+      get search_ideas_path(@search)
+      expect(response.status).to eq 404
+      binding.pry
     end
   end 
 
