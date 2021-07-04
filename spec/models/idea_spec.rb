@@ -17,7 +17,7 @@ RSpec.describe Idea, type: :model do
         @idea.body = ''
         @idea.valid?
         expect(@idea.errors.full_messages).to include("Body can't be blank")
-      end     
+      end
       it 'categoryが紐付いていなければ投稿できない' do
         @idea.category = nil
         @idea.valid?
