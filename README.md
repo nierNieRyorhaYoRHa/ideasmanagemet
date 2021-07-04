@@ -1,4 +1,10 @@
-# README
+# ideasmanagement
+
+# Requirement
+
+* Ruby   2.6.5
+* Rails  6.0.0
+* mysql2 0.5.3
 
 # Table design
 ## categories table
