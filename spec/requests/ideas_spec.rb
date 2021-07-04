@@ -73,7 +73,6 @@ RSpec.describe "Ideas", type: :request do
       @search["keyword"] = @idea.category.name + "a"
       get search_ideas_path(@search)
       expect(response.status).to eq 404
-      binding.pry
     end
   end 
 
